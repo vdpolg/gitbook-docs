@@ -6,7 +6,7 @@
 
 如果主伺服器發生故障，並且備用伺服器成為新的主伺服器，然後舊的主伺服器重新啟動，則必須具有一種機制，通知舊的主伺服器不再是主伺服器。這有時被稱為 STONITH（Shoot The Other Node In The Head），這是避免兩個系統都認為它們是主要系統所必須要做的事，這種情況會導致混亂並導致資料損毁。
 
-Many failover systems use just two systems, the primary and the standby, connected by some kind of heartbeat mechanism to continually verify the connectivity between the two and the viability of the primary. It is also possible to use a third system (called a witness server) to prevent some cases of inappropriate failover, but the additional complexity might not be worthwhile unless it is set up with sufficient care and rigorous testing.
+許多故障轉移系統(failover system)僅使用兩個系統，即主系統和備用系統，透過某種心跳機制(heartbeat mechanism)連接，以不斷驗證兩個系統之間的連接性以及主系統的可行性。也可以使用第三個系統：見證伺服器(witness server)來防止某些不適當的故障轉移情況，但除非經過足夠的謹慎和嚴格的測試，否則額外的複雜性可能不值得。
 
 PostgreSQL does not provide the system software required to identify a failure on the primary and notify the standby database server. Many such tools exist and are well integrated with the operating system facilities required for successful failover, such as IP address migration.
 
